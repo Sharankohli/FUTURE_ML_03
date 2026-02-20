@@ -222,6 +222,7 @@ streamlit run src/app.py
 
 Sharan Raj J  
 B.Tech Computer Science 
+
 Machine Learning Intern – Future Interns (2026)
 
 
