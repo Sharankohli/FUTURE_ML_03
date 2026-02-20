@@ -2,60 +2,123 @@
 
 An AI-powered Resume Screening and Candidate Ranking System built using NLP and Machine Learning techniques.
 
-This project simulates a real-world Applicant Tracking System (ATS) that evaluates multiple resumes against a recruiter-provided job description and ranks candidates based on role fit.
+This project simulates a real-world Applicant Tracking System (ATS) that evaluates multiple resumes against a recruiter-provided job description and ranks candidates based on role fit using a hybrid scoring model.
 
 ---
 
-## 🚀 Overview
+## 🚀 Project Motivation
 
-Hiring teams often receive hundreds of resumes for a single job role.  
-Manual screening is time-consuming, inconsistent, and error-prone.
+Recruiters often receive hundreds of resumes for a single role.
 
-This system automates resume evaluation using:
+Manual screening is:
+- Time-consuming
+- Inconsistent
+- Biased
+- Error-prone
 
-- NLP-based skill extraction  
-- TF-IDF similarity scoring  
-- Skill-weighted ranking model  
-- AI-generated candidate summaries  
-- Interactive Streamlit dashboard  
+Most basic ATS systems rely only on keyword matching, which fails to capture contextual relevance.
+
+This system improves upon that by combining:
+- Text similarity scoring
+- Structured skill extraction
+- Skill-weighted ranking logic
+- Candidate categorization
+- AI-generated evaluation summaries
 
 ---
 
-## 🧠 How It Works
+## 🎯 Problem Statement
 
-### 1️⃣ Job Description Input  
-Recruiter pastes a job description into the system.
+How can we automatically evaluate resumes in a way that:
 
-### 2️⃣ Resume Upload  
-Multiple resumes are uploaded in PDF format.
+- Identifies relevant candidates quickly
+- Detects missing required skills
+- Balances contextual similarity with explicit skill matching
+- Produces explainable ranking outputs for recruiters
 
-### 3️⃣ NLP Processing  
-- Text cleaning  
-- Skill extraction  
-- TF-IDF vectorization  
-- Cosine similarity scoring  
+---
 
-### 4️⃣ Hybrid Skill-Weighted Scoring Model  
+## 🧠 System Architecture
 
-Final Score:
+The system follows a modular NLP pipeline:
+
+1️⃣ **Input Layer**
+- Recruiter enters job description
+- Multiple resume PDFs are uploaded
+
+2️⃣ **Text Processing Layer**
+- PDF text extraction (PyMuPDF)
+- Lowercasing, cleaning, normalization
+- NLP preprocessing using spaCy
+
+3️⃣ **Feature Engineering**
+- TF-IDF vectorization
+- Skill extraction engine
+- Skill matching logic
+
+4️⃣ **Hybrid Scoring Engine**
+
+Final Score =
 
 0.6 × Text Similarity (TF-IDF Cosine Similarity)  
 + 0.4 × Skill Match Ratio  
 
-This ensures ranking is based on both textual relevance and required skill overlap.
+Where:
+
+- Text Similarity captures contextual alignment
+- Skill Match Ratio ensures required skill overlap
+- Balanced weighting improves ranking fairness
+
+5️⃣ **Output Layer**
+- Ranked candidates
+- Skill gap analysis
+- Candidate categorization
+- AI-generated summary
+- Resume viewer dashboard
+
+---
+
+## 📊 Hybrid Scoring Strategy
+
+Unlike simple keyword matching, this system:
+
+✔ Uses TF-IDF + cosine similarity for contextual relevance  
+✔ Extracts structured skill entities  
+✔ Computes explicit skill overlap  
+✔ Combines both into a weighted ranking model  
+✔ Produces interpretable outputs  
+
+This creates a more balanced evaluation compared to pure keyword systems.
+
+---
+
+## 📈 Candidate Evaluation Output
+
+For each candidate, the system generates:
+
+- Final Score
+- Skill Match Ratio
+- Matched Skills
+- Missing Skills
+- Category (Strong / Good / Weak Fit)
+- AI-generated resume summary
+- Full resume viewer
+
+This makes the system recruiter-friendly and decision-support oriented.
 
 ---
 
 ## 📊 Key Features
 
-- 📌 Job description input from recruiter  
-- 📄 Multiple PDF resume upload  
-- 🧠 NLP-based skill extraction  
-- 📊 Skill-weighted ranking model  
-- 🟢 Candidate categorization (Strong / Good / Weak Fit)  
-- ⚠ Skill gap detection  
-- 🧠 AI-generated resume summary  
-- 👁 View / Close full resume inside dashboard  
+- 📌 Job description input
+- 📄 Multi-PDF resume upload
+- 🧠 NLP-based preprocessing
+- 📊 TF-IDF similarity scoring
+- 🎯 Skill-weighted ranking model
+- 🟢 Candidate categorization
+- ⚠ Skill gap detection
+- 🧠 AI-generated summary engine
+- 👁 Interactive resume viewing
 
 ---
 
@@ -65,12 +128,12 @@ This ensures ranking is based on both textual relevance and required skill overl
 FUTURE_ML_03/
 │
 ├── src/
-│   ├── app.py
-│   ├── preprocess.py
-│   ├── matcher.py
-│   ├── skills.py
-│   ├── pdf_reader.py
-│   ├── summary_generator.py
+│   ├── app.py                # Streamlit application
+│   ├── preprocess.py         # Text cleaning pipeline
+│   ├── matcher.py            # Scoring & similarity engine
+│   ├── skills.py             # Skill extraction logic
+│   ├── pdf_reader.py         # Resume PDF parsing
+│   ├── summary_generator.py  # AI summary generation
 │
 ├── data/
 │   └── jobs_small.csv
@@ -89,11 +152,10 @@ For job role analysis and skill vocabulary reference:
 Resume Entities & Job Roles Dataset  
 https://www.kaggle.com/datasets/ravindrasinghrana/job-description-dataset  
 
-This dataset was used for:
-
-- Job description structure understanding  
-- Skill extraction experimentation  
-- NLP preprocessing practice  
+Used for:
+- Job description structure understanding
+- Skill extraction experimentation
+- NLP preprocessing practice
 
 ---
 
@@ -133,15 +195,26 @@ streamlit run src/app.py
 
 ---
 
-## 🛠 Tech Stack
+## 🛠 Technology Stack
 
-- Python  
-- Streamlit  
-- Scikit-learn  
-- spaCy  
-- PyMuPDF  
-- Custom Skill Extraction Engine  
-- Hybrid Scoring Model  
+- Python
+- Streamlit
+- Scikit-learn (TF-IDF, Cosine Similarity)
+- spaCy (NLP preprocessing)
+- PyMuPDF (PDF parsing)
+- Custom Skill Extraction Engine
+- Hybrid Scoring Model
+
+---
+
+## 📌 Future Improvements
+
+- Transformer-based semantic embeddings
+- GPT-powered intelligent resume summaries
+- Skill importance weighting by job role
+- Resume keyword highlighting
+- Exportable recruiter reports (CSV/PDF)
+- Role-based evaluation templates
 
 ---
 
@@ -149,7 +222,8 @@ streamlit run src/app.py
 
 Sharan Raj J  
 B.Tech Computer Science – AI & ML  
-SRM Institute of Science & Technology  
+SRM Institute of Science & Technology
+
 
 
 👤 Author
