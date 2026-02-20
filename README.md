@@ -221,13 +221,7 @@ streamlit run src/app.py
 ## 👨‍💻 Author
 
 Sharan Raj J  
-B.Tech Computer Science – AI & ML  
-SRM Institute of Science & Technology
-
-
-
-👤 Author
-
-Sharan Raj
-
+B.Tech Computer Science 
 Machine Learning Intern – Future Interns (2026)
+
+
